@@ -6,7 +6,7 @@ metadata:
     app: workshop-service
 spec:
   selector:
-    app: workshop-service
+    app: workshop-service-dom
   ports:
     - port: 8080
       targetPort: 8080
@@ -18,22 +18,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: workshop-service
+  name: workshop-service-dom
   labels:
-    app: workshop-service
+    app: workshop-service-dom
 spec:
   selector:
     matchLabels:
-      app: workshop-service
+      app: workshop-service-dom
   replicas: 2
   template:
     metadata:
       labels:
-        app: workshop-service
+        app: workshop-service-dom
     spec:
       containers:
-        - name: workshop-service
-          image: europe-west4-docker.pkg.dev/workshop-sorrentinoraf/docker-repository/workshop-us63:1.9.0
+        - name: workshop-service-dom
+          image: europe-west4-docker.pkg.dev/workshop-sorrentinoraf/docker-repository-dom/workshop-us63:1.9.0
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
